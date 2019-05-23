@@ -58,6 +58,7 @@ $(document).ready(function() {
     moves++;
     $('#moves-value').text(moves);
     if(fr == 0 && fc == 0) {
+      $('.card').parent().css('pointer-events', 'none');
       fr = cr;
       fc = cc;
       first = $(`#m-${fr}-${fc}`);
@@ -67,10 +68,12 @@ $(document).ready(function() {
       .on('animationend', function() {
         first.off('animationend');
         first.removeClass('show-it');
+        $('.card').parent().css('pointer-events', 'auto');
       });
       fsrc = first.find('img').attr('src');
     }
     else if(cr != fr || cc != fc) {
+      $('.card').parent().css('pointer-events', 'none');
       sr = cr;
       sc = cc;
       second = $(`#m-${sr}-${sc}`);
@@ -93,6 +96,7 @@ $(document).ready(function() {
               clearInterval(x);
               gameover();
             }
+            $('.card').parent().css('pointer-events', 'auto');
           });
         });
         first.find('img').addClass('done').removeClass('card');
@@ -110,6 +114,7 @@ $(document).ready(function() {
             first.add(second).removeClass('hide-it')
             .find('.card').css('visibility', 'hidden');
             $('.place').css('background-color', 'wheat');
+            $('.card').parent().css('pointer-events', 'auto');
           });
         });
       }
