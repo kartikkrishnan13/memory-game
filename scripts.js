@@ -1,3 +1,4 @@
+alert("Let the animation complete. You won't be able to select another card until it does!");
 $(document).ready(function() {
   var first = "";
   var second = "";
